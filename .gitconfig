@@ -1,0 +1,6 @@
+[user]
+	email = thomas@kepow.org
+	name = Thomas Churchman
+[core]
+	excludesfile = /home/thomas/.gitignore_global
+
