@@ -42,8 +42,10 @@ myStartupHook =
 
 myKeys = [ ((myModMask, xK_f), spawn "firefox" )
          , ((myModMask, xK_p), spawn "rofi -combi-modi run,drun -show combi -modi combi" )
-         , ((controlMask .|. shiftMask, xK_4), spawn "thingshare_screenshot region")
+         , ((controlMask .|. shiftMask, xK_1), spawn "thingshare_screenshot full")
+         , ((controlMask .|. shiftMask, xK_2), spawn "thingshare_screenshot display")
          , ((controlMask .|. shiftMask, xK_3), spawn "thingshare_screenshot window")
+         , ((controlMask .|. shiftMask, xK_4), spawn "thingshare_screenshot region")
          , ((0, 0x1008FF11), spawn "amixer sset Master $(($(amixer sget Master | grep -oP \"\\[\\d*%\\]\" | head -n 1  | tr -d \"[]%\")-3))%")
          , ((0, 0x1008FF12), spawn "amixer sset Master toggle")
          , ((0, 0x1008FF13), spawn "amixer sset Master $(($(amixer sget Master | grep -oP \"\\[\\d*%\\]\" | head -n 1  | tr -d \"[]%\")+3))%; amixer sset Master unmute")
