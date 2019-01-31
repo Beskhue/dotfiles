@@ -6,6 +6,7 @@ import XMonad.Layout.NoBorders
 import XMonad.Layout.Tabbed
 import XMonad.Layout.IndependentScreens
 import XMonad.Util.Run
+import XMonad.Util.SessionStart
 import XMonad.Util.SpawnOnce
 import XMonad.Util.EZConfig (additionalKeys)
 import XMonad.Hooks.DynamicLog
@@ -37,8 +38,8 @@ myStartupHook =
   -- Autostart .desktop
   spawnOnce "dex -a" >>
   spawnOnce "thingshare_init" >>
-  -- Patch in fellscreen support.
-  addEWMHFullscreen
+  -- Patch in fullscreen support.
+  doOnce addEWMHFullscreen
 
 myKeys = [ ((myModMask, xK_f), spawn "firefox" )
          , ((myModMask, xK_p), spawn "rofi -combi-modi run,drun -show combi -modi combi" )
