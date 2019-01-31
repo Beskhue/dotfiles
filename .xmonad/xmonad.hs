@@ -98,7 +98,6 @@ polybarLogHook dbus = def
 
 main = do
     num <- countScreens
-    --xmprocs <- mapM (\i -> spawnPipe $ "xmobar /home/thomas/.xmobar/xmobarrc-" ++ show i ++ " -x " ++ show i) [0..num-1]
     mapM (\m -> spawn $ "MONITOR=" ++ m ++ " polybar top") monitors
     dbus <- D.connectSession
     D.requestName dbus (D.busName_ "org.xmonad.Log")
