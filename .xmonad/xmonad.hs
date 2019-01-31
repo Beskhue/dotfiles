@@ -35,6 +35,8 @@ barRedUnderline = "#992618"
 myStartupHook =
   -- Set background image.
   spawn "feh --bg-scale /home/thomas/Backgrounds/wallpaper-pixelart1.png" >>
+  -- Start status bars.
+  mapM (\m -> spawnOnce $ "MONITOR=" ++ m ++ " polybar top") monitors >>
   -- Autostart .desktop
   spawnOnce "dex -a" >>
   spawnOnce "thingshare_init" >>
@@ -98,7 +100,6 @@ polybarLogHook dbus = def
 
 main = do
     num <- countScreens
-    mapM (\m -> spawn $ "MONITOR=" ++ m ++ " polybar top") monitors
     dbus <- D.connectSession
     D.requestName dbus (D.busName_ "org.xmonad.Log")
         [D.nameAllowReplacement, D.nameReplaceExisting, D.nameDoNotQueue]
