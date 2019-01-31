@@ -22,6 +22,6 @@ pkgs.mkShell {
   ];
 }
 EOF
-    ${EDITOR:-vim} shell.nix
+    ${EDITOR:-nvim} shell.nix
   fi
 }
