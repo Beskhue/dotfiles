@@ -14,7 +14,8 @@
   (global-leader-def
     :states '(normal motion)
     :keymaps 'override
-    "f t" 'neotree-toggle)
+    "f t" 'neotree-toggle
+    "f r" 'neotree-change-root)
   (add-hook 'after-init-hook #'neotree-toggle)
   (add-hook 'neo-after-create-hook
 	    (lambda (&rest _) (display-line-numbers-mode -1))))
