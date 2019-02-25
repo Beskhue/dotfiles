@@ -24,11 +24,14 @@
     :prefix "SPC")
   (general-create-definer mode-leader-def
     :prefix "SPC m"))
-
-(global-leader-def
-  :states '(normal motion)
-  :keymaps 'override
-  "b" 'switch-to-buffer)
+(use-package which-key
+  :config
+  (which-key-mode)
+  (setq which-key-idle-delay 0.01)
+  (which-key-add-key-based-replacements
+    "SPC f" "file"
+    "SPC g" "git"
+    "SPC m" "major mode"))
 (general-define-key
   :states '(normal motion)
   "C-j" 'next-buffer
@@ -38,7 +41,25 @@
   "C-S-k" 'evil-window-up
   "C-S-l" 'evil-window-right)
 
-(use-package magit)
+(use-package magit
+  :config
+  (global-leader-def
+    :states '(normal motion)
+    :keymaps 'override
+    "g b" 'magit-blame
+    "g h" 'magit-log-buffer-file
+    "g s" 'magit-status
+    "g S" 'magit-stage-file
+    "g U" 'magit-unstage-file
+    "g c" 'magit-commit))
+
+(use-package projectile
+  :config
+  (projectile-mode +1)
+  (global-leader-def
+    :states '(normal motion)
+    :keymaps 'override
+    "p" 'projectile-command-map))
 
 (load "~/.emacs.d/style.el")
 (load "~/.emacs.d/files.el")
@@ -49,6 +70,10 @@
   (add-hook 'flycheck-mode-hook #'flycheck-inline-mode))
 (with-eval-after-load 'rust-mode
   (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
+(global-leader-def
+  :states '(normal motion)
+  :keymaps 'override
+  "e l" 'flycheck-list-errors)
 (general-define-key
   :states 'normal
   :keymaps 'flycheck-error-list-mode-map
@@ -66,8 +91,28 @@
   (ivy-mode 1)
   (setq ivy-use-virtual-buffers t)
   (setq enable-recursive-minibuffers t)
+  (setq ivy-height 10)
+  (global-leader-def
+    :states '(normal motion)
+    :keymaps 'override
+    "b" 'ivy-switch-buffer))
+(use-package swiper
+  :config
+  (setq swiper-completion-method 'ivy)
   (general-define-key
-    "C-s" 'swiper))
+   "C-s" 'swiper))
+(use-package counsel
+  :config
+  (general-define-key
+   "M-x" 'counsel-M-x))
+(use-package avy
+  :config
+  (global-leader-def
+    :states '(normal motion)
+    :keymaps 'override
+    "s l" 'avy-goto-line
+    "s c" 'avy-goto-char))
+  
 (load "~/.emacs.d/lang/markdown.el")
 (load "~/.emacs.d/lang/nix.el")
 (load "~/.emacs.d/lang/rust.el")
