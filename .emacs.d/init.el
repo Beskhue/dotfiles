@@ -13,6 +13,10 @@
  ;; If there is more than one, they won't work right.
  )
 (setq inhibit-startup-screen t)
+(setq backup-directory-alist
+  `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms
+  `((".*" ,temporary-file-directory t)))
 (require 'use-package)
 (use-package evil
   :config (evil-mode 1))
