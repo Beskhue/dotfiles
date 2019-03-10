@@ -120,6 +120,7 @@
     "s c" 'avy-goto-char))
   
 (load "~/.emacs.d/lang/markdown.el")
+(load "~/.emacs.d/lang/org.el")
 (load "~/.emacs.d/lang/nix.el")
 (load "~/.emacs.d/lang/rust.el")
 (load "~/.emacs.d/lang/statistics.el")
