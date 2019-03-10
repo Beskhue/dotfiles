@@ -17,6 +17,8 @@
   `((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms
   `((".*" ,temporary-file-directory t)))
+;; Don't use tabs in region indents.
+(setq-default indent-tabs-mode nil)
 (require 'use-package)
 (use-package evil
   :config (evil-mode 1))
