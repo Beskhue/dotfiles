@@ -70,6 +70,14 @@
 (load "~/.emacs.d/style.el")
 (load "~/.emacs.d/files.el")
 
+;; Highlight text after 80th column.
+(use-package column-enforce-mode
+  :config
+  (setq column-enforce-column 80)
+  (add-hook 'prog-mode-hook 'column-enforce-mode))
+
+(setq-default show-trailing-whitespace t)
+
 (add-hook 'after-init-hook #'global-flycheck-mode)
 (setq flycheck-display-errors-delay 0)
 (with-eval-after-load 'flycheck
