@@ -77,6 +77,7 @@
   (add-hook 'prog-mode-hook 'column-enforce-mode))
 
 (setq-default show-trailing-whitespace t)
+(add-hook 'prog-mode-hook 'show-paren-mode)
 
 (add-hook 'after-init-hook #'global-flycheck-mode)
 (setq flycheck-display-errors-delay 0)
