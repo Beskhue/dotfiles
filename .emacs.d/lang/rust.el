@@ -10,6 +10,11 @@
 (use-package company-mode
   :hook racer-mode)
 
+(add-hook 'rust-mode-hook '(lambda()
+                             (column-enforce-mode 0)
+                             (setq-local column-enforce-column 100)
+                             (column-enforce-mode 1)))
+
 (mode-leader-def
   :states 'normal
   :keymaps 'rust-mode-map
