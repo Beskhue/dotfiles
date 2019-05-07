@@ -47,18 +47,6 @@
   "C-S-k" 'evil-window-up
   "C-S-l" 'evil-window-right)
 
-(use-package magit
-  :config
-  (global-leader-def
-    :states '(normal motion)
-    :keymaps 'override
-    "g b" 'magit-blame
-    "g h" 'magit-log-buffer-file
-    "g s" 'magit-status
-    "g S" 'magit-stage-file
-    "g U" 'magit-unstage-file
-    "g c" 'magit-commit))
-
 (use-package projectile
   :config
   (projectile-mode +1)
@@ -67,15 +55,16 @@
     :keymaps 'override
     "p" 'projectile-command-map))
 
+(load "~/.emacs.d/git.el")
 (load "~/.emacs.d/style.el")
 (load "~/.emacs.d/files.el")
 
 ;; Highlight text after 80th column.
-(use-package column-enforce-mode
-  :config
-  (setq column-enforce-column 80)
-  (add-hook 'prog-mode-hook 'column-enforce-mode))
-
+(use-package column-enforce-mode)
+(add-hook 'prog-mode-hook '(lambda()
+                             (column-enforce-mode 0)
+                             (setq-local column-enforce-column 80)
+                             (column-enforce-mode 1)))
 (setq-default show-trailing-whitespace t)
 (add-hook 'prog-mode-hook 'show-paren-mode)
 
@@ -127,7 +116,7 @@
     :keymaps 'override
     "s l" 'avy-goto-line
     "s c" 'avy-goto-char))
-  
+
 (load "~/.emacs.d/lang/markdown.el")
 (load "~/.emacs.d/lang/org.el")
 (load "~/.emacs.d/lang/nix.el")
