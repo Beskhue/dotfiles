@@ -12,5 +12,3 @@
 ;; (use-package fill-column-indicator
 ;;  :config
 ;;  (add-hook 'prog-mode-hook 'fci-mode))
-
-(global-display-line-numbers-mode 1)
