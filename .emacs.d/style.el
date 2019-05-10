@@ -13,8 +13,4 @@
 ;;  :config
 ;;  (add-hook 'prog-mode-hook 'fci-mode))
 
-(use-package beacon
-  :config
-  (beacon-mode 1))
-
 (global-display-line-numbers-mode 1)
