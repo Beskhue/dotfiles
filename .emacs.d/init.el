@@ -83,6 +83,7 @@
   :keymaps 'flycheck-error-list-mode-map
   "j" 'flycheck-error-list-next-error
   "k" 'flycheck-error-list-previous-error)
+
 (use-package company
   :config
   (general-define-key
@@ -106,9 +107,8 @@
   (general-define-key
    "C-s" 'swiper))
 (use-package counsel
-  :config
-  (general-define-key
-   "M-x" 'counsel-M-x))
+  :general
+  ("M-x" 'counsel-M-x))
 (use-package avy
   :config
   (global-leader-def
