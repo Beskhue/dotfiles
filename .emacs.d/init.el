@@ -122,11 +122,20 @@
   ("M-x" 'counsel-M-x))
 (use-package avy
   :general
+  (general-define-key
+   :states '(insert normal motion)
+   :keymap 'override
+   "C-d" 'avy-goto-char-timer)
   (global-leader-def
     :states '(normal motion)
     :keymaps 'override
-    "s l" 'avy-goto-line
-    "s c" 'avy-goto-char))
+    "j b" 'evil-jump-backward
+    "j l" 'avy-goto-line
+    "j w" 'avy-goto-word
+    "j j" 'avy-goto-char)
+  :config
+  (setq avy-all-windows nil)
+  (setq avy-timeout-seconds 0.25))
 
 (load "~/.emacs.d/lang/markdown.el")
 (load "~/.emacs.d/lang/org.el")
