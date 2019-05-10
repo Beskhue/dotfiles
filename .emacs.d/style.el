@@ -21,3 +21,5 @@
 (use-package all-the-icons
   :config
   (setq neo-theme (if (display-graphic-p) 'icons 'arrow)))
+
+(global-display-line-numbers-mode 1)
