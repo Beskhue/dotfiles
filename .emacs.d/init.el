@@ -83,13 +83,13 @@
   :keymaps 'flycheck-error-list-mode-map
   "j" 'flycheck-error-list-next-error
   "k" 'flycheck-error-list-previous-error)
-(use-package company-mode
-  :defer
+(use-package company
   :config
   (general-define-key
    :keymaps 'override
    "TAB" 'company-indent-or-complete-common)
-  (setq company-tooltip-align-annotations t))
+  (setq company-tooltip-align-annotations t)
+  (setq company-idle-delay 0))
 (use-package ivy
   :config
   (ivy-mode 1)
