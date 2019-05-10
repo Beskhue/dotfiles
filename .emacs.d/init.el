@@ -110,7 +110,7 @@
   :general
   ("M-x" 'counsel-M-x))
 (use-package avy
-  :config
+  :general
   (global-leader-def
     :states '(normal motion)
     :keymaps 'override
