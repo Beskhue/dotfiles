@@ -101,7 +101,7 @@
   :config
   (general-define-key
    :keymaps 'override
-   "TAB" 'company-indent-or-complete-common)
+   "M-TAB" 'company-indent-or-complete-common)
   (setq company-tooltip-align-annotations t)
   (setq company-idle-delay 0))
 (use-package ivy
