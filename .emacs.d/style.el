@@ -18,6 +18,9 @@
     (set-face-attribute 'mode-line-inactive nil :box        nil)
     (set-face-attribute 'mode-line-inactive nil :background "#f9f2d9")))
 
+(use-package all-the-icons
+  :config
+  (setq neo-theme (if (display-graphic-p) 'icons 'arrow)))
 ;; (use-package fill-column-indicator
 ;;  :config
 ;;  (add-hook 'prog-mode-hook 'fci-mode))
