@@ -48,6 +48,8 @@
     "SPC f" "file"
     "SPC g" "git"
     "SPC m" "major mode"))
+
+;; Buffer motion.
 (general-define-key
   :states '(normal motion)
   "C-j" 'next-buffer
