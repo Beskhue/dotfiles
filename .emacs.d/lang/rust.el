@@ -15,7 +15,7 @@
 (use-package racer
   :hook (rust-mode . racer-mode))
 (use-package flycheck-rust
-  :hook cargo-minor-mode
+  :hook (cargo-minor-mode . flycheck-rust-setup)
   :config
   (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
 (use-package eldoc-mode
