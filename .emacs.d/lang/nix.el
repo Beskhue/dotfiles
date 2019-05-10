@@ -1,3 +1,4 @@
 ;;; nix --- Nix.
 ;;; Code:
-(use-package nix-mode)
+(use-package nix-mode
+  :mode "\\.nix\\'")
