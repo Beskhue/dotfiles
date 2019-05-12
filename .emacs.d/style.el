@@ -9,7 +9,8 @@
   :config (minions-mode 1))
 
 (use-package solarized-theme
-  :config (load-theme 'solarized-light t)
+  :config
+(load-theme 'solarized-light t)
   (let ((line (face-attribute 'mode-line :underline)))
     (set-face-attribute 'mode-line          nil :overline   line)
     (set-face-attribute 'mode-line-inactive nil :overline   line)
@@ -21,5 +22,8 @@
 (use-package all-the-icons
   :config
   (setq neo-theme (if (display-graphic-p) 'icons 'arrow)))
+
+(add-to-list 'default-frame-alist
+             '(font . "Iosevka-10"))
 
 (global-display-line-numbers-mode 1)
