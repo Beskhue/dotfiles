@@ -1,9 +1,6 @@
 # Direnv
 eval "$(direnv hook zsh)"
 
-# Aliases.
-alias vi="nvim"
-
 # Home manager.
 source "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
 

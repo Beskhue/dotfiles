@@ -1,7 +1,14 @@
 ;;; ess --- Statistics languages (such as R).
-;;; Code:
-(use-package ess
-  :config
+;;; Code;
+;; Emacs automatically loads ESS.
+(use-package ess-r-mode
+  :mode ("\\.[rR]\\'" . ess-r-mode)
+  :mode ("\\.[rR]profile\\'" . ess-r-mode)
+  :general
+  (general-define-key
+   :states '(normal motion insert)
+   :keymaps 'ess-mode-map
+   "C-RET" 'ess-eval-line)
   (mode-leader-def
     :states '(normal motion)
     :keymaps 'ess-mode-map
@@ -12,11 +19,7 @@
     "s r" 'ess-eval-region
     "s R" 'ess-eval-region-and-go
     "s f" 'ess-eval-function
-    "s F" 'ess-eval-function-and-go)
-  (general-define-key
-    :states '(normal motion insert)
-    :keymaps 'ess-mode-map
-    "C-RET" 'ess-eval-line))
+    "s F" 'ess-eval-function-and-go))
 
 (use-package ess-R-data-view
   :hook ess-mode

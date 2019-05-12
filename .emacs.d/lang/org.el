@@ -1,3 +1,4 @@
 ;;; org --- Org.
 ;;; Code:
-(use-package org)
+(use-package org
+  :mode ("\\.org\\'" . org-mode))
