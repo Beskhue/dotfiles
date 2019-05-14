@@ -6,7 +6,9 @@
   (setq line-number-mode t)
   (setq column-number-mode t))
 (use-package minions
-  :config (minions-mode 1))
+  :config
+  (setq minions-direct '(flycheck-mode))
+  (minions-mode 1))
 
 (use-package solarized-theme
   :config
