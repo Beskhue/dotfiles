@@ -59,6 +59,13 @@
   "C-S-k" 'evil-window-up
   "C-S-l" 'evil-window-right)
 
+(use-package drag-stuff
+  :general
+  ("M-h" 'drag-stuff-left)
+  ("M-j" 'drag-stuff-down)
+  ("M-k" 'drag-stuff-up)
+  ("M-l" 'drag-stuff-right))
+
 (use-package projectile
   :config
   (projectile-mode +1)
