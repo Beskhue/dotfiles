@@ -144,10 +144,14 @@
   (global-leader-def
     :states '(normal motion)
     :keymaps 'override
-    "m d" 'lsp-ui-doc-show
-    "m D" 'lsp-ui-peek-find-definitions
-    "m x" 'lsp-ui-peek-find-references)
-  (setq lsp-ui-flycheck-enable t))
+    "m d" 'lsp-ui-peek-find-definitions
+    "m x" 'lsp-ui-peek-find-references
+    "m a" 'lsp-execute-code-action
+    "m r" 'lsp-rename)
+  (general-define-key
+   :states '(normal motion insert visual)
+   "M-/" 'lsp-ui-doc-show)
+   (setq lsp-ui-flycheck-enable t))
 (use-package company-lsp
   :hook lsp-mode-hook
   :init (push 'company-lsp company-backends))
