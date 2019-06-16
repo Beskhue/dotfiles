@@ -91,7 +91,6 @@
   :init
   (setq flycheck-display-errors-delay 0)
   :config
-  (global-flycheck-mode)
   (global-leader-def
     :states '(normal motion)
     :keymaps 'override
@@ -101,6 +100,9 @@
    :keymaps 'flycheck-error-list-mode-map
    "j" 'flycheck-error-list-next-error
    "k" 'flycheck-error-list-previous-error))
+
+;; TODO: we don't want inline mode for LSP-programs (but it also seems lsp-ui
+;; automatically disables it).
 (use-package flycheck-inline
   :hook (flycheck-mode . flycheck-inline-mode))
 
@@ -121,6 +123,17 @@
     :states '(normal motion)
     :keymaps 'override
     "b" 'ivy-switch-buffer))
+
+(use-package lsp-mode
+  :commands lsp)
+(use-package lsp-ui
+  :hook (lsp-mode-hook . lsp-ui-mode)
+  :config
+  (setq lsp-ui-flycheck-enable t))
+(use-package company-lsp
+  :hook lsp-mode-hook
+  :init (push 'company-lsp company-backends))
+
 (use-package swiper
   :general
   ("C-s" 'swiper)
