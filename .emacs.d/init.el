@@ -144,8 +144,8 @@
   (global-leader-def
     :states '(normal motion)
     :keymaps 'override
-    "e d" 'lsp-ui-doc-show
-    "m d" 'lsp-ui-peek-find-definitions
+    "m d" 'lsp-ui-doc-show
+    "m D" 'lsp-ui-peek-find-definitions
     "m x" 'lsp-ui-peek-find-references)
   (setq lsp-ui-flycheck-enable t))
 (use-package company-lsp
