@@ -127,8 +127,26 @@
 (use-package lsp-mode
   :commands lsp)
 (use-package lsp-ui
+  :init
+  (setq lsp-ui-sideline-enable nil)
+  (setq lsp-ui-peek-enable t)
+  (setq lsp-ui-peek-always-show t)
+  (setq lsp-ui-doc-enable nil) ;; Don't pop up lsp doc automatically.
+  (setq lsp-ui-doc-delay 0)
+  (setq lsp-ui-doc-max-width 70)
+  (setq lsp-ui-doc-include-signature t)
+  (custom-set-faces
+   '(lsp-ui-doc-background ((t (:background "#fcf5e2")))))
+  (custom-set-variables
+   '(lsp-ui-doc-border "#cb4b16"))
   :hook (lsp-mode-hook . lsp-ui-mode)
   :config
+  (global-leader-def
+    :states '(normal motion)
+    :keymaps 'override
+    "e d" 'lsp-ui-doc-show
+    "m d" 'lsp-ui-peek-find-definitions
+    "m x" 'lsp-ui-peek-find-references)
   (setq lsp-ui-flycheck-enable t))
 (use-package company-lsp
   :hook lsp-mode-hook
