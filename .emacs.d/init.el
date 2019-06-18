@@ -124,6 +124,8 @@
     :keymaps 'override
     "b" 'ivy-switch-buffer))
 
+(use-package yasnippet
+  :hook (prog-mode . yas-minor-mode))
 (use-package lsp-mode
   :commands lsp)
 (use-package lsp-ui
