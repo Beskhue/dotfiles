@@ -14,3 +14,9 @@
                              (setq-local column-enforce-column 100)
                              (column-enforce-mode 1)))
 
+;; Fix autocompletion slowness when using company-lsp + Rust,
+;; as per https://github.com/tigersoldier/company-lsp/issues/61#issuecomment-475993376
+(add-hook 'rust-mode-hook (lambda ()
+                             (setq company-backends
+                             (delete 'company-capf company-backends))))
+
