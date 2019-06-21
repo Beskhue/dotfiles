@@ -22,6 +22,8 @@
  )
 
 (setq inhibit-startup-screen t)
+(menu-bar-mode -1)
+(tool-bar-mode -1)
 
 (setq backup-directory-alist
       `((".*" . ,temporary-file-directory)))
@@ -47,7 +49,8 @@
   (which-key-add-key-based-replacements
     "SPC f" "file"
     "SPC g" "git"
-    "SPC m" "major mode"))
+    "SPC m" "major mode"
+    "SPC p" "projectile"))
 
 ;; Buffer motion.
 (general-define-key
