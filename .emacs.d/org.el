@@ -15,3 +15,5 @@
         )
   )
 (setq org-agenda-files (list "~/Seafile/org-agenda"))
+(custom-set-variables
+ '(org-html-doctype "html5"))
