@@ -186,6 +186,7 @@
   (setq avy-all-windows nil)
   (setq avy-timeout-seconds 0.25))
 
+(load "~/.emacs.d/lang/yaml.el")
 (load "~/.emacs.d/lang/markdown.el")
 (load "~/.emacs.d/lang/org.el")
 (load "~/.emacs.d/lang/nix.el")
