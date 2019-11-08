@@ -193,6 +193,7 @@
 (load "~/.emacs.d/lang/rust.el")
 (load "~/.emacs.d/lang/haskell.el")
 (load "~/.emacs.d/lang/javascript.el")
+(load "~/.emacs.d/lang/python.el")
 (load "~/.emacs.d/lang/statistics.el")
 (load "~/.emacs.d/lang/magma.el")
 (load "~/.emacs.d/org.el")
