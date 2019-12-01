@@ -1,13 +1,10 @@
 ;;; javascript --- Javascript.
 ;;; Code:
-(use-package rjsx-mode
+(use-package js-mode
   :mode ("\\.js\\'" "\\.ts\\'" "\\.jsx\\'" "\\.tsx\\'")
-  :hook (rjsx-mode . lsp)
-  :config
-    (setq js2-basic-offset 2)
-    (setq js2-mode-show-parse-errors nil)
-    (setq js2-mode-show-strict-warnings nil))
-(add-hook 'rjsx-mode-hook 'flycheck-mode)
+  :hook (js-mode . eglot)
+  :init
+  (setq js-indent-level 2))
 
 (use-package prettier-js
   :config

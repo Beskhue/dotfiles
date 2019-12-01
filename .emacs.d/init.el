@@ -90,25 +90,6 @@
 (setq-default show-trailing-whitespace t)
 (add-hook 'prog-mode-hook 'show-paren-mode)
 
-(use-package flycheck
-  :init
-  (setq flycheck-display-errors-delay 0)
-  :config
-  (global-leader-def
-    :states '(normal motion)
-    :keymaps 'override
-    "e l" 'flycheck-list-errors)
-  (general-define-key
-   :states 'normal
-   :keymaps 'flycheck-error-list-mode-map
-   "j" 'flycheck-error-list-next-error
-   "k" 'flycheck-error-list-previous-error))
-
-;; TODO: we don't want inline mode for LSP-programs (but it also seems lsp-ui
-;; automatically disables it).
-(use-package flycheck-inline
-  :hook (flycheck-mode . flycheck-inline-mode))
-
 (use-package company
   :config
   (general-define-key
@@ -127,39 +108,26 @@
     :keymaps 'override
     "b" 'ivy-switch-buffer))
 
-(use-package yasnippet
-  :hook (prog-mode . yas-minor-mode))
-(use-package lsp-mode
-  :commands lsp)
-(use-package lsp-ui
-  :init
-  (setq lsp-ui-sideline-enable nil)
-  (setq lsp-ui-peek-enable t)
-  (setq lsp-ui-peek-always-show t)
-  (setq lsp-ui-doc-enable nil) ;; Don't pop up lsp doc automatically.
-  (setq lsp-ui-doc-delay 0)
-  (setq lsp-ui-doc-max-width 70)
-  (setq lsp-ui-doc-include-signature t)
-  (custom-set-faces
-   '(lsp-ui-doc-background ((t (:background "#fcf5e2")))))
-  (custom-set-variables
-   '(lsp-ui-doc-border "#cb4b16"))
-  :hook (lsp-mode-hook . lsp-ui-mode)
+(use-package eglot
+  :hook (eglot . company-mode)
   :config
   (global-leader-def
     :states '(normal motion)
     :keymaps 'override
-    "m d" 'lsp-ui-peek-find-definitions
-    "m x" 'lsp-ui-peek-find-references
-    "m a" 'lsp-execute-code-action
-    "m r" 'lsp-rename)
+    "m d" 'xref-find-definitions
+    "m x" 'xref-find-references
+    "m t" 'eglot-find-typeDefinition
+    "m a" 'eglot-code-actions
+    "m r" 'eglot-rename))
+(use-package yasnippet
+  :hook (prog-mode . yas-minor-mode))
+(use-package flymake
+  :config
   (general-define-key
-   :states '(normal motion insert visual)
-   "M-/" 'lsp-ui-doc-show)
-   (setq lsp-ui-flycheck-enable t))
-(use-package company-lsp
-  :hook lsp-mode-hook
-  :init (push 'company-lsp company-backends))
+   :states '(insert normal motion)
+   :keymap 'override
+   "C-j" 'flymake-goto-next-error
+   "C-k" 'flymake-goto-prev-error))
 
 (use-package swiper
   :general
@@ -180,7 +148,7 @@
     :keymaps 'override
     "j b" 'evil-jump-backward
     "j l" 'avy-goto-line
-    "j w" 'avy-goto-word
+    "j w" 'avy-goto-word-1
     "j j" 'avy-goto-char)
   :config
   (setq avy-all-windows nil)

@@ -8,7 +8,7 @@
   :config
   (global-leader-def
     :states '(normal motion)
-    :keymaps 'override
+    :keymaps 'python-mode
     "m f" 'blacken-buffer))
 
 (add-hook 'python-mode-hook '(lambda()
