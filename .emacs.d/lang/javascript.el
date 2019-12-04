@@ -2,7 +2,7 @@
 ;;; Code:
 (use-package js-mode
   :mode ("\\.js\\'" "\\.ts\\'" "\\.jsx\\'" "\\.tsx\\'")
-  :hook (js-mode . eglot)
+  :hook (js-mode . eglot-ensure)
   :init
   (setq js-indent-level 2))
 

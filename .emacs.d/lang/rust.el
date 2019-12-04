@@ -2,7 +2,7 @@
 ;;; Code:
 (use-package rust-mode
   :mode "\\.rs\\'"
-  :hook (rust-mode . eglot)
+  :hook (rust-mode . eglot-ensure)
   :config
   (global-leader-def
     :states '(normal motion)
